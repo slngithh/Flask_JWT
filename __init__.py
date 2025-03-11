@@ -43,17 +43,14 @@ def protected():
 
 # Création d'une route menant à une interface de connexion admin
 @app.route("/admin", methods=["POST"])
-def login():
-    username = request.json.get("username","admin")
-    password = request.json.get("password","admin")
+def admin():
+    username = request.json.get("username", "admin")
+    password = request.json.get("password", "admin")
     if username != "admin" or password != "admin":
         return jsonify({"msg": "Nom d'utilisateur ou mot de passe erroné"}), 401
 
     access_token = create_access_token(identity=username)
     return jsonify(access_token=access_token)
-
-
-
-                                                                                                               
+                                                                                    
 if __name__ == "__main__":
   app.run(debug=True)
