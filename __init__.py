@@ -33,13 +33,11 @@ def login():
 
     access_token = create_access_token(identity=username)
     return jsonify(access_token=access_token)
+  
 # Création d'une route menant à une interface de connexion admin
 @app.route('/admin', methods=["POST"])
 def admin(): 
-    username = request.json.get("username", None)
-    password = request.json.get("password", None)
-    if username != "test" or password != "test":
-        return jsonify({"msg": "Mauvais utilisateur ou mot de passe"}), 401
+   return jsonify(logged_in_as=current_user), 200
 
 # Route protégée par un jeton valide
 @app.route("/protected", methods=["GET"])
