@@ -25,7 +25,9 @@ def hello_world():
 # Création d'une route qui vérifie l'utilisateur et retour un Jeton JWT si ok.
 # La fonction create_access_token() est utilisée pour générer un jeton JWT.
 @app.route("/login", methods=["POST"])
-def login():
+  def logon ():
+     return render_template('logon.html')
+  def login():
     username = request.json.get("username", None)
     password = request.json.get("password", None)
     if username != "test" or password != "test":
